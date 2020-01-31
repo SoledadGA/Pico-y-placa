@@ -84,10 +84,9 @@ public class Servicios {
 
     public void resultado() {
         this.diaIngreso();
-        this.horaIngreso();
         this.obtenerRestriccion();
-        
-        if (this.dia.equals(this.diasRestriccion.get(this.placa.charAt(placa.length() - 1)))) {
+        String ultimoDigitoPlaca = this.placa.substring(placa.length()-1);
+        if (this.dia.equals(this.diasRestriccion.get(Integer.parseInt(ultimoDigitoPlaca)))) {
             if ((this.horaIngreso() >= 700) && (this.horaIngreso() <= 930)) {
                 System.out.println("El vehículo de placa " + this.placa + " no puede circular el día "
                         + this.dia + " de 07:00 a 09:30.");
@@ -98,6 +97,9 @@ public class Servicios {
                 System.out.println("El vehículo de placa " + this.placa + " puede circular el día "
                         + this.dia + " a la hora " + this.hora + ".");
             }
+        }else{
+            System.out.println("El vehículo de placa " + this.placa + " puede circular el día "
+                        + this.dia + " a la hora " + this.hora + ".");
         }
     }
 
